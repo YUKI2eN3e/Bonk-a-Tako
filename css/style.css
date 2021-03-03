@@ -20,7 +20,7 @@ button {
   cursor: url(../img/palu2.png), auto;
 }
 
-.tanah {
+.water {
   width: 200px;
   height: 200px;
   position: relative;
@@ -28,27 +28,27 @@ button {
   float: left;
 }
 
-.tanah::after {
+.water::after {
   content: '';
   display: block;
   width: 200px;
   height: 100px;
-  background: url(../img/tanah.png) bottom center no-repeat;
+  background: url(../img/water.png) bottom center no-repeat;
   background-size: 80%;
   position: absolute;
   bottom: -25px;
 }
 
-.tikus {
+.tako {
   width: 100%;
   height: 100%;
-  background: url(../img/tikus.png) bottom center no-repeat;
+  background: url(../img/takodachi.png) bottom center no-repeat;
   background-size: 60%;
   position: absolute;
   top: 100px;
   transition: top 0.3s;
 }
 
-.tanah.muncul .tikus {
+.water.appear .tako {
   top: -15px;
 }

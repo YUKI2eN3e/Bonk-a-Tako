@@ -1,56 +1,56 @@
-const tanah = document.querySelectorAll('.tanah');
-const tikus = document.querySelectorAll('.tikus');
-const papanSkor = document.querySelector('.papan-skor');
-const pop = document.querySelector('#pop');
+const water = document.querySelectorAll('.water');
+const tako = document.querySelectorAll('.tako');
+const scoreboard = document.querySelector('.scoreboard');
+const bonk = document.querySelector('#bonk');
 
-let tanahSebelumnya;
-let selesai;
-let skor;
+let waterSebelumnya;
+let done;
+let score;
 
-function randomTanah(tanah) {
-  const t = Math.floor(Math.random() * tanah.length);
-  const tRandom = tanah[t];
-  if (tRandom == tanahSebelumnya) {
-    randomTanah(tanah);
+function randomWater(water) {
+  const t = Math.floor(Math.random() * water.length);
+  const tRandom = water[t];
+  if (tRandom == waterSebelumnya) {
+    randomWater(water);
   }
-  tanahSebelumnya = tRandom;
+  waterSebelumnya = tRandom;
   return tRandom;
 }
 
-function randomWaktu(min, max) {
+function randomTime(min, max) {
   return Math.round(Math.random() * (max - min) + min);
 }
 
-function munculkanTikus() {
-  const tRandom = randomTanah(tanah);
-  const wRandom = randomWaktu(300, 1000);
-  tRandom.classList.add('muncul');
+function surface() {
+  const tRandom = randomWater(water);
+  const wRandom = randomTime(300, 1000);
+  tRandom.classList.add('appear');
 
   setTimeout(() => {
-    tRandom.classList.remove('muncul');
-    if (!selesai) {
-      munculkanTikus();
+    tRandom.classList.remove('appear');
+    if (!done) {
+      surface();
     }
   }, wRandom);
 }
 
-function mulai() {
-  selesai = false;
-  skor = 0;
-  papanSkor.textContent = 0;
-  munculkanTikus();
+function start() {
+  done = false;
+  score = 0;
+  scoreboard.textContent = 0;
+  surface();
   setTimeout(() => {
-    selesai = true;
+    done = true;
   }, 10000);
 }
 
 function pukul() {
-  skor++;
-  this.parentNode.classList.remove('muncul');
-  pop.play();
-  papanSkor.textContent = skor;
+  score++;
+  this.parentNode.classList.remove('appear');
+  bonk.play();
+  scoreboard.textContent = score;
 }
 
-tikus.forEach(t => {
+tako.forEach(t => {
   t.addEventListener('click', pukul);
 });
