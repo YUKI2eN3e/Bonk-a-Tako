@@ -2,6 +2,7 @@ const water = document.querySelectorAll('.water');
 const tako = document.querySelectorAll('.tako');
 const scoreboard = document.querySelector('.scoreboard');
 const bonk = document.querySelector('#bonk');
+const bgm = document.querySelector('#bgm');
 
 let waterBefore;
 let done;
@@ -38,9 +39,11 @@ function start() {
   done = false;
   score = 0;
   scoreboard.textContent = 0;
+  bgm.play();
   surface();
   setTimeout(() => {
     done = true;
+    bgm.pause();
   }, 10000);
 }
 
