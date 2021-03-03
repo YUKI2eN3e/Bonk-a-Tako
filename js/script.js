@@ -3,17 +3,17 @@ const tako = document.querySelectorAll('.tako');
 const scoreboard = document.querySelector('.scoreboard');
 const bonk = document.querySelector('#bonk');
 
-let waterSebelumnya;
+let waterBefore;
 let done;
 let score;
 
 function randomWater(water) {
   const t = Math.floor(Math.random() * water.length);
   const tRandom = water[t];
-  if (tRandom == waterSebelumnya) {
+  if (tRandom == waterBefore) {
     randomWater(water);
   }
-  waterSebelumnya = tRandom;
+  waterBefore = tRandom;
   return tRandom;
 }
 
