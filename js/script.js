@@ -3,6 +3,7 @@ const tako = document.querySelectorAll('.tako');
 const scoreboard = document.querySelector('.scoreboard');
 const bonk = document.querySelector('#bonk');
 const bgm = document.querySelector('#bgm');
+const state = document.querySelector("#state");
 
 let waterBefore;
 let done;
@@ -40,14 +41,16 @@ function start() {
   score = 0;
   scoreboard.textContent = 0;
   bgm.play();
+  state.textContent = "Go";
   surface();
   setTimeout(() => {
     done = true;
     bgm.pause();
+    state.textContent = "Done";
   }, 10000);
 }
 
-function pukul() {
+function timer() {
   score++;
   this.parentNode.classList.remove('appear');
   bonk.play();
@@ -55,5 +58,5 @@ function pukul() {
 }
 
 tako.forEach(t => {
-  t.addEventListener('click', pukul);
+  t.addEventListener('click', timer);
 });
